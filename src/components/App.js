@@ -8,6 +8,7 @@ import Question from "../views/Question";
 import styled from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import Send from "../views/Send";
+import End from "../views/End";
 const Main = styled.div`
   position: relative;
   top: 50%;
@@ -30,6 +31,17 @@ class App extends Component {
     "3": "",
     email: "",
     accept: false
+  };
+  postData = () => {
+    const data = {};
+    data.name = this.state.name;
+    data.productID = this.state.productID;
+    data.email = this.state.email;
+    data.accept = this.state.accept;
+    data.question1 = this.state["0"];
+    data.question2 = this.state["1"];
+    data.question3 = this.state["2"];
+    console.log(data);
   };
   componentDidMount() {
     fetch("https://images.egzaw.pl/questions.json")
@@ -106,6 +118,16 @@ class App extends Component {
                   accept={this.state.accept}
                   answersHandle={this.answersHandle}
                 />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          />
+          <Route
+            path="/end"
+            render={() =>
+              this.state.questions !== undefined ? (
+                <End {...this.state} handle={this.postData} />
               ) : (
                 <Redirect to="/" />
               )

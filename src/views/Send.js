@@ -12,6 +12,16 @@ const StyledSend = styled.div`
   color: #2e6fff;
   justify-items: flex-start;
   padding-top: 10%;
+  p {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+  h2 {
+    margin-top: 15px;
+  }
+  ${StyledInput} {
+    margin: 15px 0;
+  }
 `;
 const Send = props => {
   return (

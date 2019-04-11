@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import QuestionCouner from "../components/QuestionCounter";
 import styled from "styled-components";

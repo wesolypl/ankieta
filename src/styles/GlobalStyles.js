@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
 }
 html{
     font-family:Arial, Helvetica, sans-serif;
-    font-size:20px;
+    font-size:18px;
+    touch-action: manipulation;
 }
 body{
     width:100%;
