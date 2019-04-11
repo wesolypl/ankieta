@@ -1,0 +1,14 @@
+[
+  {
+    "question": "Jak oceniasz atraktcyjność programu wyjazdu",
+    "answers": ["1", "2", "3", "4", "5"]
+  },
+  {
+    "question": "Jak oceniasz prace pilota wycieczki",
+    "answers": ["1", "2", "3", "4", "5"]
+  },
+  {
+    "question": "Na ile prawdopodonie jest, że polecisz Rainbow przyjacielowi lub znajomemu",
+    "answers": ["1", "2", "3", "4", "5"]
+  }
+]
