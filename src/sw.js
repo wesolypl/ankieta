@@ -7,7 +7,6 @@ if (workbox) {
 } else {
   console.log("workbox niezaładowany");
 }
-workbox.loadModule("workbox-core");
 
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
