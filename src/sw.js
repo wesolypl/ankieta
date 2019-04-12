@@ -5,8 +5,9 @@ if (workbox) {
 } else {
   console.log("workbox niezaładowany");
 }
-self.skipWaiting();
-self.clientsClaim();
+workbox.skipWaiting();
+workbox.clientsClaim();
+
 workbox.setConfig({ debug: true });
 workbox.core.setCacheNameDetails({
   prefix: "my-app",
