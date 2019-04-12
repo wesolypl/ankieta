@@ -62,4 +62,12 @@ workbox.routing.registerRoute(
     ]
   })
 );
-workbox.precaching.precacheAndRoute(self.__precacheManifest);
+// workbox.precaching.precacheAndRoute(self.__precacheManifest);
+workbox.precaching.precacheAndRoute([
+  "/static/*.js",
+  "/static/*.map",
+  "/index.html",
+  "/*.js",
+  "/*.json",
+  "/*.ico"
+]);
