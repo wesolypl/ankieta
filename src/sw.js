@@ -19,9 +19,12 @@ self.addEventListener("activate", event => {
   console.log("aktywacja sw");
   event.waitUntil(self.clients.claim());
 });
-self.addEventListener("fetch", event => {});
+self.addEventListener("fetch", async event => {});
 
-// We need this in Webpack plugin (refer to swSrc option): https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#full_injectmanifest_config
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-// app-shell
+workbox.loadModule("workbox-strategies");
+workbox.routing.registerRoute(
+  new RegExp(".png$"),
+  new workbox.strategies.CacheFirst()
+);
