@@ -1,3 +1,5 @@
+workbox.setConfig({ debug: true });
+
 console.log("połączony");
 
 if (workbox) {
@@ -5,8 +7,11 @@ if (workbox) {
 } else {
   console.log("workbox niezaładowany");
 }
+workbox.loadModule("workbox-core");
 
-workbox.setConfig({ debug: true });
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
+
 workbox.core.setCacheNameDetails({
   prefix: "my-app",
   suffix: "v.0.0.2",
