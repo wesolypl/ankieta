@@ -19,9 +19,20 @@ workbox.core.setCacheNameDetails({
 workbox.loadModule("workbox-strategies");
 
 workbox.routing.registerRoute(
-  new RegExp("/static/*.css"),
+  new RegExp("/static/js/*.js"),
   new workbox.strategies.CacheFirst({
-    cacheName: "my-app-cache-css",
+    cacheName: "my-app-cache-js",
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7
+      })
+    ]
+  })
+);
+workbox.routing.registerRoute(
+  new RegExp("/*.json"),
+  new workbox.strategies.CacheFirst({
+    cacheName: "my-app-cache-json",
     plugins: [
       new workbox.expiration.Plugin({
         maxAgeSeconds: 60 * 60 * 24 * 7
@@ -62,4 +73,4 @@ workbox.routing.registerRoute(
     ]
   })
 );
-workbox.precaching.precacheAndRoute(self.__precacheManifest);
+// workbox.precaching.precacheAndRoute(self.__precacheManifest);
