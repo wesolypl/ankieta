@@ -19,7 +19,7 @@ workbox.core.setCacheNameDetails({
 workbox.loadModule("workbox-strategies");
 
 workbox.routing.registerRoute(
-  new RegExp(".css$"),
+  new RegExp("/.css$"),
   new workbox.strategies.CacheFirst({
     cacheName: "my-app-cache-css",
     plugins: [
@@ -30,7 +30,7 @@ workbox.routing.registerRoute(
   })
 );
 workbox.routing.registerRoute(
-  new RegExp(".(png|svg|jpg|jpeg)$"),
+  new RegExp("/.(png|svg|jpg|jpeg)$"),
   new workbox.strategies.CacheFirst({
     cacheName: "my-app-cache-images",
     plugins: [
@@ -41,7 +41,7 @@ workbox.routing.registerRoute(
   })
 );
 workbox.routing.registerRoute(
-  new RegExp(".json$"),
+  new RegExp("/mainfest.json$"),
   new workbox.strategies.CacheFirst({
     cacheName: "my-app-cache-mainfest",
     plugins: [
