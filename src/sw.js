@@ -5,8 +5,8 @@ if (workbox) {
 } else {
   console.log("workbox niezaładowany");
 }
-workbox.skipWaiting();
-workbox.clientsClaim();
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
 workbox.setConfig({ debug: true });
 workbox.core.setCacheNameDetails({
