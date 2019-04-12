@@ -10,7 +10,9 @@ module.exports = function override(config, env) {
     // Extend the default injection config with required swSrc
     const workboxConfig = {
       ...defaultInjectConfig,
-      swSrc: path.join(__dirname, "src", "sw.js")
+      swSrc: path.join(__dirname, "src", "sw.js"),
+      swDest: path.join(__dirname, "build", "service-worker.js"),
+      importWorkboxFrom: "local"
     };
     config = rewireWorkboxInject(workboxConfig)(config, env);
   }
