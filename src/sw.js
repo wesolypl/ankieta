@@ -25,6 +25,6 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
 workbox.loadModule("workbox-strategies");
 workbox.routing.registerRoute(
-  new RegExp(".png$"),
+  new RegExp(".js$"),
   new workbox.strategies.CacheFirst()
 );
