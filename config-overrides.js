@@ -12,9 +12,9 @@ module.exports = function override(config, env) {
       exclude: [
         /\.map$/,
         /^(?:asset-)manifest.*\.js(?:on)?$/,
-        /\.html$/,
-        /\.ico$/,
-        /\.json$/
+        "index.html",
+        "favicon.ico",
+        "manifest.json"
       ],
       swSrc: path.join(__dirname, "src", "sw.js"),
       swDest: path.join(__dirname, "build", "service-worker.js"),
