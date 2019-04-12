@@ -20,7 +20,7 @@ workbox.loadModule("workbox-strategies");
 
 workbox.routing.registerRoute(
   new RegExp(".css$"),
-  workbox.strategies.CacheFirst({
+  new workbox.strategies.CacheFirst({
     cacheName: "my-app-cache-css",
     plugins: [
       new workbox.expiration.Plugin({
@@ -31,7 +31,7 @@ workbox.routing.registerRoute(
 );
 workbox.routing.registerRoute(
   new RegExp(".(png|svg|jpg|jpeg)$"),
-  workbox.strategies.CacheFirst({
+  new workbox.strategies.CacheFirst({
     cacheName: "my-app-cache-images",
     plugins: [
       new workbox.expiration.Plugin({
@@ -42,7 +42,7 @@ workbox.routing.registerRoute(
 );
 workbox.routing.registerRoute(
   new RegExp("https://images.egzaw.pl/questions.json"),
-  workbox.strategies.StaleWhileRevalidate({
+  new workbox.strategies.StaleWhileRevalidate({
     cacheName: "my-app-cache-questions",
     plugins: [
       new workbox.expiration.Plugin({
