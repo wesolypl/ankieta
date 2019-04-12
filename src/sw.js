@@ -63,6 +63,17 @@ workbox.routing.registerRoute(
   })
 );
 workbox.routing.registerRoute(
+  new RegExp("/favicon.ico"),
+  new workbox.strategies.CacheFirst({
+    cacheName: "my-app-cache-icon",
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7
+      })
+    ]
+  })
+);
+workbox.routing.registerRoute(
   new RegExp("https://images.egzaw.pl/questions.json"),
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: "my-app-cache-questions",
