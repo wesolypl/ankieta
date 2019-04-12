@@ -19,7 +19,12 @@ self.addEventListener("activate", event => {
   console.log("aktywacja sw");
   event.waitUntil(self.clients.claim());
 });
-self.addEventListener("fetch", async event => {});
+self.addEventListener("fetch", event => {
+  if (event.request) {
+    const staleWhileRevalidate = new workbox.strategies.StaleWhileRevalidate();
+    event.respondWith(staleWhileRevalidate.handle({ event }));
+  }
+});
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
