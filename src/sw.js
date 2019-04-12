@@ -1,3 +1,2 @@
 console.log("Hello World");
-workbox.skipWaiting();
-workbox.clientsClaim();
+workbox.precaching.prechacheAndRoute(self.__precacheManifest || []);
