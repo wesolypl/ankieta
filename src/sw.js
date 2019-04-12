@@ -10,12 +10,7 @@ workbox.core.setCacheNameDetails({
   prefix: "my-app",
   suffix: "v.0.0.1"
 });
-workbox.routing.registerRoute(
-  /\.json$/,
-  new workbox.strategies.CacheFirst({
-    cacheName: "json-cache"
-  })
-);
+
 self.addEventListener("install", event => {
   console.log("instalacja sw");
   event.waitUntil(self.skipWaiting());
