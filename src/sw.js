@@ -5,31 +5,47 @@ if (workbox) {
 } else {
   console.log("workbox niezaładowany");
 }
+self.skipWaiting();
+self.clientsClaim();
 workbox.setConfig({ debug: true });
 workbox.core.setCacheNameDetails({
   prefix: "my-app",
-  suffix: "v.0.0.1"
+  suffix: "v.0.0.2",
+  runtime: "runtime"
 });
-
-self.addEventListener("install", event => {
-  console.log("instalacja sw");
-  event.waitUntil(self.skipWaiting());
-});
-self.addEventListener("activate", event => {
-  console.log("aktywacja sw");
-  event.waitUntil(self.clients.claim());
-});
-self.addEventListener("fetch", event => {
-  if (event.request) {
-    const staleWhileRevalidate = new workbox.strategies.StaleWhileRevalidate();
-    event.respondWith(staleWhileRevalidate.handle({ event }));
-  }
-});
-
-workbox.precaching.precacheAndRoute(self.__precacheManifest);
-
 workbox.loadModule("workbox-strategies");
+
 workbox.routing.registerRoute(
-  new RegExp(".js$"),
-  new workbox.strategies.CacheFirst()
+  new RegExp(".css$"),
+  workbox.strategies.cacheFirst({
+    cacheName: "my-app-cache-css",
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7
+      })
+    ]
+  })
 );
+workbox.routing.registerRoute(
+  new RegExp(".(png|svg|jpg|jpeg)$"),
+  workbox.strategies.cacheFirst({
+    cacheName: "my-app-cache-images",
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7
+      })
+    ]
+  })
+);
+workbox.routing.registerRoute(
+  new RegExp("https://images.egzaw.pl/questions.json"),
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: "my-app-cache-questions",
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 7
+      })
+    ]
+  })
+);
+workbox.precaching.precacheAndRoute(self.__precacheManifest);
