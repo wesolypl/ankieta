@@ -25,4 +25,3 @@ self.addEventListener("fetch", event => {});
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
 // app-shell
-workbox.routing.registerRoute("/", workbox.strategies.CacheFirst());
