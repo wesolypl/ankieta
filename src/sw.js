@@ -63,8 +63,3 @@ workbox.routing.registerRoute(
   })
 );
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
-workbox.precaching.precacheAndRoute([
-  "/mainfest.json",
-  "/favicon.ico",
-  { url: "/index.html" }
-]);
